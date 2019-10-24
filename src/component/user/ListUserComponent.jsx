@@ -42,7 +42,7 @@ class ListUserComponent extends Component {
 
     addUser() {
         window.localStorage.removeItem("userId");
-        this.props.history.push('/add-user');
+        this.props.history.push('/api/test');
     }
 
     render() {
