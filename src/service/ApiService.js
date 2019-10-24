@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL = 'http://localhost:8080/api/temperatures';
+const USER_API_BASE_URL = 'http://localhost:8080/api';
 
 class ApiService {
 
     fetchUsers() {
-        return axios.get(USER_API_BASE_URL);
+        return axios.get(USER_API_BASE_URL + '/temperatures');
     }
 
     fetchUserById(userId) {
@@ -17,7 +17,7 @@ class ApiService {
     }
 
     addUser(user) {
-        return axios.post(""+USER_API_BASE_URL, user);
+        return axios.post(""+USER_API_BASE_URL + '/test', user);
     }
 
     editUser(user) {
