@@ -57,10 +57,11 @@ class ListUserComponent extends Component {
                         <tr>
                             <th>Id</th>
                             <th>Date</th>
-                            <th>Temperature Sensor 1</th>
-                            <th>Temperature Sensor 2</th>
-                            <th>Status releu 1</th>
-                            <th>Status releu 2</th>
+                            <th>TempH</th>
+                            <th>TempS</th>
+                            <th>Outside</th>
+                            <th>StatusH</th>
+                            <th>StatusS</th>
 
                         </tr>
                     </thead>
@@ -71,10 +72,12 @@ class ListUserComponent extends Component {
                                     <tr key={user.id}>
                                         <td>{user.id}</td>
                                         <td>{user.date}</td>
-                                        <td>{user.name}</td>
-                                        <td>{user.name}</td>
-                                        <td>{user.name}</td>
-                                        <td>{user.name}</td>
+
+                                        <td>{user.insideHappy}</td>
+                                        <td>{user.insideSnoopy}</td>
+                                        <td>{user.outside}</td>
+                                        <td>{user.openHappy}</td>
+                                        <td>{user.openSnoopy}</td>
 
                                        {/* <td>
                                             <button className="btn btn-success" onClick={() => this.deleteUser(user.id)}> Delete</button>
