@@ -19,14 +19,14 @@ class AddUserComponent extends Component {
     render() {
         return (
             <form>
-                <Toggle
+                {/* <Toggle
                     onClick={this.onToggle}
                     on={<p>Pornit</p>}
                     off={<p>Oprit</p>}
                     size="xs"
                     offstyle="danger"
                     active={this.state.toggleActive}
-                />
+                /> */}
             </form>
         )
     }

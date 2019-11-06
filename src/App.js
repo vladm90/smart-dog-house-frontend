@@ -8,7 +8,7 @@ import Application from "./component/user/Application";
 import Navbar from 'react-bootstrap/Navbar';
 import { Nav } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
-
+import ApiService from "./service/ApiService";
 // import Toggle from 'react-bootstrap-toggle';
 // import 'react-toggle/style.css';
 
@@ -39,7 +39,7 @@ function App() {
                               <Nav.Link href="#deets">More deets</Nav.Link>
                               <Nav.Link eventKey={2} href="#memes">
                                   Dank memes
-                              </Nav.Link>
+                              </Nav.Link>opri
                           </Nav>
                       </Navbar.Collapse>
                   </Navbar>
@@ -52,9 +52,7 @@ function App() {
                       {/*offstyle="danger"*/}
                       {/*active={this.state.toggleActive}*/}
                   {/*/>*/}
-                  <button className="btn btn-primary" style={{margin:'10px'}} onClick={() => this.addUser()}> Start LED</button>
-                  <button className="btn btn-warning" style={{margin:'10px'}} onClick={() => this.addUser()}> Temperature</button>
-                  <button className="btn btn-info" style={{margin:'10px'}} onClick={() => this.addUser()}> Start Heat</button>
+
 
                   {<Switch>
                       <Route path="/" exact component={Application} >
@@ -71,15 +69,24 @@ function App() {
       </div>
   );
 }
-function addUser(){
-    var username = document.getElementById('username').value;
-    var email = document.getElementById('email').value;
-    var entry = document.createElement('li');
-    entry.appendChild(document.createTextNode(username + ' ' + email));
-    list.appendChild(entry);
 
-    return false;
-}
+//lightOn(){
+//           ApiService.lightOn()
+//           .then(res => {
+//               this.setState({message : 'User deleted successfully.'});
+//              // this.setState({users: this.state.users.filter(user => user.id !== userId)});
+//           })
+//
+//}
+//
+//lightOff(){
+//           ApiService.lightOff()
+//           .then(res => {
+//               this.setState({message : 'User deleted successfully.'});
+//              // this.setState({users: this.state.users.filter(user => user.id !== userId)});
+//           })
+//
+//}
 const style = {
     color: '#33ccff',
     margin: '10px'

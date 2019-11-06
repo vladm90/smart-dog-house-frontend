@@ -8,8 +8,14 @@ class ApiService {
         return axios.get(USER_API_BASE_URL + '/temperatures');
     }
 
-    fetchUserById(userId) {
-        return axios.get(USER_API_BASE_URL + '/' + userId);
+
+    lightOn() {
+    debugger;
+        return axios.get(USER_API_BASE_URL + '/relay/on');
+    }
+
+    lightOff() {
+       return axios.get(USER_API_BASE_URL + '/relay/off');
     }
 
     deleteUser(userId) {
