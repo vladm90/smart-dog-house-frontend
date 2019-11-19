@@ -1,16 +1,14 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import ListUserComponent from "./component/user/ListUserComponent";
-import AddUserComponent from "./component/user/AddUserComponent";
+import TemperatureComponent from "./component/user/TemperatureComponent";
+import ControlComponent from "./component/user/ControlComponent";
 import EditUserComponent from "./component/user/EditUserComponent";
 import Application from "./component/user/Application";
 import Navbar from 'react-bootstrap/Navbar';
 import { Nav } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
-import ApiService from "./service/ApiService";
-// import Toggle from 'react-bootstrap-toggle';
-// import 'react-toggle/style.css';
+
 
 function App() {
   return (
@@ -21,7 +19,7 @@ function App() {
 
               <div className="col-md-12">
                   <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                      <Navbar.Brand href="#home">Smart Dog House</Navbar.Brand>
                       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                       <Navbar.Collapse id="responsive-navbar-nav">
                           <Nav className="mr-auto">
@@ -39,54 +37,26 @@ function App() {
                               <Nav.Link href="#deets">More deets</Nav.Link>
                               <Nav.Link eventKey={2} href="#memes">
                                   Dank memes
-                              </Nav.Link>opri
+                              </Nav.Link>
                           </Nav>
                       </Navbar.Collapse>
                   </Navbar>
-                  <h1 className="text-center" style={style}>Smart Dog House</h1>
-                  {/*<Toggle*/}
-                      {/*onClick={this.onToggle}*/}
-                      {/*on={<h2>ON</h2>}*/}
-                      {/*off={<h2>OFF</h2>}*/}
-                      {/*size="xs"*/}
-                      {/*offstyle="danger"*/}
-                      {/*active={this.state.toggleActive}*/}
-                  {/*/>*/}
+                  {/*<h1 className="text-center" style={style}>Smart Dog House</h1>*/}
 
-
-                  {<Switch>
+                  <Switch>
                       <Route path="/" exact component={Application} >
-                          <Route path="/" component={AddUserComponent} />
-                          <Route path="/" component={ListUserComponent} />
+                          <Route path="/" component={ControlComponent} />
+                          <Route path="/" component={TemperatureComponent} />
 
                       </Route>
-                      {/*<Route path="/users" component={ListUserComponent} />
-                      <Route path="/add-user" component={AddUserComponent} />
-                      <Route path="/edit-user" component={EditUserComponent} />*/}
-                  </Switch>}
+                  </Switch>
               </div>
           </Router>
       </div>
   );
 }
 
-//lightOn(){
-//           ApiService.lightOn()
-//           .then(res => {
-//               this.setState({message : 'User deleted successfully.'});
-//              // this.setState({users: this.state.users.filter(user => user.id !== userId)});
-//           })
-//
-//}
-//
-//lightOff(){
-//           ApiService.lightOff()
-//           .then(res => {
-//               this.setState({message : 'User deleted successfully.'});
-//              // this.setState({users: this.state.users.filter(user => user.id !== userId)});
-//           })
-//
-//}
+
 const style = {
     color: '#33ccff',
     margin: '10px'
