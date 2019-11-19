@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL = 'http://82.76.176.61:8080/api';
+const USER_API_BASE_URL = 'http://localhost:8080/api';
 
 class ApiService {
 
@@ -9,13 +9,13 @@ class ApiService {
     }
 
 
-    lightOn() {
+    lightOn(relayId) {
     debugger;
-        return axios.get(USER_API_BASE_URL + '/relay/on');
+        return axios.get(USER_API_BASE_URL + '/relay/' + relayId + '/on');
     }
 
-    lightOff() {
-       return axios.get(USER_API_BASE_URL + '/relay/off');
+    lightOff(relayId) {
+       return axios.get(USER_API_BASE_URL + '/relay/' + relayId + '/off');
     }
 
     deleteUser(userId) {

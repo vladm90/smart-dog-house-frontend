@@ -13,8 +13,10 @@ class ListUserComponent extends Component {
         this.editUser = this.editUser.bind(this);
         this.addUser = this.addUser.bind(this);
         this.reloadUserList = this.reloadUserList.bind(this);
-        this.lightOn = this.lightOn.bind(this);
-        this.lightOff = this.lightOff.bind(this);
+        this.lightHappyOn = this.lightHappyOn.bind(this);
+        this.lightHappyOff = this.lightHappyOff.bind(this);
+        this.lightSnoopyOn = this.lightSnoopyOn.bind(this);
+        this.lightSnoopyOff = this.lightSnoopyOff.bind(this);
     }
 
     componentDidMount() {
@@ -47,21 +49,38 @@ class ListUserComponent extends Component {
         this.props.history.push('/api/test');
     }
 
-    lightOn(){
-               ApiService.lightOn()
-               .then(res => {
-                   this.setState({message : 'User deleted successfully.'});
-                  // this.setState({users: this.state.users.filter(user => user.id !== userId)});
-               })
+    lightHappyOn(){
+        ApiService.lightOn(1)
+            .then(res => {
+                this.setState({message : 'User deleted successfully.'});
+                // this.setState({users: this.state.users.filter(user => user.id !== userId)});
+            })
 
     }
 
-    lightOff(){
-               ApiService.lightOff()
-               .then(res => {
-                   this.setState({message : 'User deleted successfully.'});
-                  // this.setState({users: this.state.users.filter(user => user.id !== userId)});
-               })
+    lightHappyOff(){
+        ApiService.lightOff(1)
+            .then(res => {
+                this.setState({message : 'User deleted successfully.'});
+                // this.setState({users: this.state.users.filter(user => user.id !== userId)});
+            })
+
+    }
+    lightSnoopyOn(){
+        ApiService.lightOn(2)
+            .then(res => {
+                this.setState({message : 'User deleted successfully.'});
+                // this.setState({users: this.state.users.filter(user => user.id !== userId)});
+            })
+
+    }
+
+    lightSnoopyOff(){
+        ApiService.lightOff(2)
+            .then(res => {
+                this.setState({message : 'User deleted successfully.'});
+                // this.setState({users: this.state.users.filter(user => user.id !== userId)});
+            })
 
     }
 
@@ -70,16 +89,15 @@ class ListUserComponent extends Component {
 
 
             <div border="1">
-<button className="btn btn-primary" style={{margin:'10px'}} onClick={() => this.lightOn()}> ON</button>
-                                                                      <button className="btn btn-warning" style={{margin:'10px'}} onClick={() => this.lightOff()}> OFF</button>
-                                                                      <button className="btn btn-info" style={{margin:'10px'}} onClick={() => this.addUser()}> Start Heat</button>
-
+                <button className="btn btn-primary" style={{margin:'10px'}} onClick={() => this.lightHappyOn()}> ON Happy</button>
+                <button className="btn btn-warning" style={{margin:'10px'}} onClick={() => this.lightHappyOff()}> OFF Happy</button><br></br>
+                <button className="btn btn-primary" style={{margin:'10px'}} onClick={() => this.lightSnoopyOn()}> ON Snoopy</button>
+                <button className="btn btn-warning" style={{margin:'10px'}} onClick={() => this.lightSnoopyOff()}> OFF Snoopy</button>
 
                 <table className="table table-striped" border="1">
                     <caption className="text-center">Today</caption>
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Date</th>
                             <th>TempH</th>
                             <th>TempS</th>
@@ -94,7 +112,6 @@ class ListUserComponent extends Component {
                             this.state.users.map(
                         user =>
                                     <tr key={user.id}>
-                                        <td>{user.id}</td>
                                         <td>{user.date}</td>
 
                                         <td>{user.insideHappy}</td>
