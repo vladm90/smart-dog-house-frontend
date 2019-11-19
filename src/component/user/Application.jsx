@@ -20,7 +20,7 @@ class Application extends Component {
     }
 
     reloadUserList() {
-        ApiService.fetchUsers()
+        ApiService.getTemperatures()
             .then((res) => {
                 this.setState({users: res.data.result})
             });

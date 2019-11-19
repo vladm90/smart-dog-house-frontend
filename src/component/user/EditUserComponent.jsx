@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react'
 import ApiService from "../../service/ApiService";
 
@@ -83,4 +84,4 @@ class EditUserComponent extends Component {
     }
 }
 
-export default EditUserComponent;
+export default EditUserComponent;*/

@@ -4,13 +4,12 @@ const USER_API_BASE_URL = 'http://localhost:8080/api';
 
 class ApiService {
 
-    fetchUsers() {
+    getTemperatures() {
         return axios.get(USER_API_BASE_URL + '/temperatures');
     }
 
 
     lightOn(relayId) {
-    debugger;
         return axios.get(USER_API_BASE_URL + '/relay/' + relayId + '/on');
     }
 
