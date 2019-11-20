@@ -8,6 +8,10 @@ class ApiService {
         return axios.get(USER_API_BASE_URL + '/temperatures');
     }
 
+    getTemperaturesFiltred(request) {
+        return axios.post(USER_API_BASE_URL + '/temperatures', request);
+    }
+
     getStats() {
             return axios.get(USER_API_BASE_URL + '/stats');
         }

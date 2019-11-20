@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import ApiService from "../../service/ApiService";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,7 +11,8 @@ class TemperatureComponent extends Component {
         this.state = {
             temperatures: [],
             message: null,
-            startDate: new Date()
+            startDate: new Date(),
+            endDate: new Date(),
         };
 
         this.reloadUserList = this.reloadUserList.bind(this);
@@ -27,38 +28,45 @@ class TemperatureComponent extends Component {
             .then((res) => {
                 this.setState({temperatures: res.data.result})
             });
-      /*  const DATE_OPTIONS = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
-      this.setState({user: (new Date()).toLocaleDateString('en-US', DATE_OPTIONS)}); */
+        /*  const DATE_OPTIONS = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+        this.setState({user: (new Date()).toLocaleDateString('en-US', DATE_OPTIONS)}); */
     }
 
-    handleChange = date => {
+    handleChangeStartDate = date => {
         this.setState({
             startDate: date
         });
     };
- reloadUserList2() {
-            ApiService.getStats()
-                .then((res) => {
 
-                });
-          /*  const DATE_OPTIONS = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
-          this.setState({user: (new Date()).toLocaleDateString('en-US', DATE_OPTIONS)}); */
-        }
+    handleChangeEndDate = date => {
+        this.setState({
+            endDate: date
+        });
+    };
+
+    onSearch() {
+        const request = {startDate: this.state.startDate, endDate: this.state.endDate};
+        ApiService.getTemperaturesFiltred(request)
+            .then((res) => {
+                this.setState({temperatures: res.data.result})
+            });
+    }
+
+
     render() {
- const ExampleCustomInput = ({ value, onClick }) => (
-                        <button className="example-custom-input" onClick={onClick}>
-                          {value}
-                        </button>
-                      );
+        const ExampleCustomInput = ({value, onClick}) => (
+            <button className="btn btn-secondary calendar-buttons" onClick={onClick}>
+                {value}
+            </button>
+        );
         return (
 
 
             <div border="1">
 
                 {<div className="container">
-                    <div className="row" style={{margin:'10px'}}>
+                    <div className="row" style={{margin: '10px'}}>
                         <div className="col-sm">
-
                             <DatePicker
                                 selected={this.state.startDate}
                                 showTimeSelect
@@ -66,27 +74,25 @@ class TemperatureComponent extends Component {
                                 timeIntervals={60}
                                 timeCaption="time"
                                 dateFormat="d.M.yyyy H:mm"
-                                customInput={<ExampleCustomInput />}
-                                onChange={this.handleChange}
-                               />
-                        </div>
-                        <div className="col-sm">
-
+                                customInput={<ExampleCustomInput/>}
+                                onChange={this.handleChangeStartDate}
+                            />
+                            &nbsp;
                             <DatePicker
-                                selected={this.state.startDate}
+                                selected={this.state.endDate}
                                 showTimeSelect
-                                timeFormat="HH:mm"
+                                timeFormat="HH"
                                 timeIntervals={60}
                                 timeCaption="time"
                                 dateFormat="d.M.yyyy H:mm"
-                                onChange={this.handleChange}/>
-                        </div>
-                        <div className="col-lg">
-                            <button onClick={this.reloadUserList2}>Search</button>
-                        </div>
-                       {/* <div className="col-sm">
+                                customInput={<ExampleCustomInput/>}
+                                onChange={this.handleChangeEndDate}
+                            />
+                            <button className="btn btn-secondary calendar-buttons" style={{margin:'0 0 0px 5px'}} onClick={() => this.onSearch()}> Search</button>
 
-                        </div>*/}
+
+                        </div>
+
 
                     </div>
                 </div>}

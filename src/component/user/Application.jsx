@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
-import ApiService from "../../service/ApiService";
 
 class Application extends Component {
 
-    constructor(props) {
+    /*constructor(props) {
         super(props)
-       /* this.state = {
+       /!* this.state = {
             users: [],
             message: null
         }
         this.deleteUser = this.deleteUser.bind(this);
         this.editUser = this.editUser.bind(this);
         this.addUser = this.addUser.bind(this);
-        this.reloadUserList = this.reloadUserList.bind(this);*/
+        this.reloadUserList = this.reloadUserList.bind(this);*!/
     }
 
-   /* componentDidMount() {
+   /!* componentDidMount() {
         this.reloadUserList();
     }
 
@@ -24,8 +23,8 @@ class Application extends Component {
             .then((res) => {
                 this.setState({users: res.data.result})
             });
-    }*/
-
+    }*!/
+*/
     render() {
         return (
             <div>
