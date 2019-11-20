@@ -8,6 +8,10 @@ class ApiService {
         return axios.get(USER_API_BASE_URL + '/temperatures');
     }
 
+    getStats() {
+            return axios.get(USER_API_BASE_URL + '/stats');
+        }
+
 
     lightOn(relayId) {
         return axios.get(USER_API_BASE_URL + '/relay/' + relayId + '/on');

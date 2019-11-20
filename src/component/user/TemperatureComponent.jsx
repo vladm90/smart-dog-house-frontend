@@ -19,6 +19,7 @@ class TemperatureComponent extends Component {
 
     componentDidMount() {
         this.reloadUserList();
+
     }
 
     reloadUserList() {
@@ -35,8 +36,20 @@ class TemperatureComponent extends Component {
             startDate: date
         });
     };
+ reloadUserList2() {
+            ApiService.getStats()
+                .then((res) => {
 
+                });
+          /*  const DATE_OPTIONS = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+          this.setState({user: (new Date()).toLocaleDateString('en-US', DATE_OPTIONS)}); */
+        }
     render() {
+ const ExampleCustomInput = ({ value, onClick }) => (
+                        <button className="example-custom-input" onClick={onClick}>
+                          {value}
+                        </button>
+                      );
         return (
 
 
@@ -47,14 +60,15 @@ class TemperatureComponent extends Component {
                         <div className="col-sm">
 
                             <DatePicker
-
                                 selected={this.state.startDate}
                                 showTimeSelect
-                                timeFormat="HH:mm"
+                                timeFormat="HH"
                                 timeIntervals={60}
                                 timeCaption="time"
                                 dateFormat="d.M.yyyy H:mm"
-                                onChange={this.handleChange}/>
+                                customInput={<ExampleCustomInput />}
+                                onChange={this.handleChange}
+                               />
                         </div>
                         <div className="col-sm">
 
@@ -68,7 +82,7 @@ class TemperatureComponent extends Component {
                                 onChange={this.handleChange}/>
                         </div>
                         <div className="col-lg">
-                            <button onClick={this.saveUser}>Search</button>
+                            <button onClick={this.reloadUserList2}>Search</button>
                         </div>
                        {/* <div className="col-sm">
 
