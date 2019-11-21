@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Toggle from 'react-bootstrap-toggle';
 import 'react-bootstrap-toggle/dist/bootstrap2-toggle.css'
 import ApiService from "../../service/ApiService";
+//import RefreshIcon from '@material-ui/icons/Refresh';
 
 class ControlComponent extends Component {
       constructor(props) {
@@ -19,14 +20,14 @@ class ControlComponent extends Component {
 
         this.onToggleHappy = this.onToggleHappy.bind(this);
         this.onToggleSnoopy = this.onToggleSnoopy.bind(this);
-        this.reloadUserList = this.reloadUserList.bind(this);
+        this.getStats = this.getStats.bind(this);
     }
 
      componentDidMount() {
-            this.reloadUserList();
+            this.getStats();
         }
 
-        reloadUserList() {
+        getStats() {
             ApiService.getStats()
                 .then((res) => {
                      let stats = res.data.result;
@@ -37,6 +38,12 @@ class ControlComponent extends Component {
                         openHappy: stats.openHappy,
                         openSnoopy: stats.openSnoopy,
                         })
+                        if (stats.openHappy === "CLOSED"){
+                            this.setState({toggleHappyActive:false})
+                        }
+                         if (stats.openSnoopy === "CLOSED"){
+                            this.setState({toggleSnoopyActive:false})
+                        }
                 });
           /*  const DATE_OPTIONS = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
           this.setState({user: (new Date()).toLocaleDateString('en-US', DATE_OPTIONS)}); */
@@ -81,7 +88,7 @@ class ControlComponent extends Component {
     render() {
         return (
 
-            <form>
+
                 <div className="container">
                     <div className="row">
                         <div className="col-sm" style={{margin:'10px'}}>
@@ -104,6 +111,8 @@ class ControlComponent extends Component {
                                 offstyle="danger"
                                 active={this.state.toggleSnoopyActive}
                             />
+                             <button className="btn btn-warning" style={{margin:'0 0 0px 5px'}} onClick={() => this.getStats()}>R {/*  <RefreshIcon /> */}</button>
+
                         </div>
                         <div className="col-sm" style={{margin:'10px'}}>
                             <li>Temperature Happy: {this.state.insideHappy}&#176;C</li>
@@ -118,7 +127,7 @@ class ControlComponent extends Component {
                 </div>
 
 
-            </form>
+
 
         )
     }

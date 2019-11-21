@@ -12,11 +12,11 @@ import { NavDropdown } from 'react-bootstrap';
 function App() {
   return (
 
-      <div className="container">
+      <div>
 
           <Router>
 
-              <div className="col-md-12">
+              <div>
                   <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                       <Navbar.Brand href="#home">Smart Dog House</Navbar.Brand>
                       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -40,7 +40,7 @@ function App() {
                           </Nav>
                       </Navbar.Collapse>
                   </Navbar>
-                  {/*<h1 className="text-center" style={style}>Smart Dog House</h1>*/}
+
 
                   <Switch>
                       <Route path="/" exact component={Application} >
@@ -54,10 +54,5 @@ function App() {
   );
 }
 
-
-/*const style = {
-    color: '#33ccff',
-    margin: '10px'
-}*/
 
 export default App;

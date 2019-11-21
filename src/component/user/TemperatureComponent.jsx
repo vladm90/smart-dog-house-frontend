@@ -68,9 +68,10 @@ class TemperatureComponent extends Component {
                     <div className="row" style={{margin: '10px'}}>
                         <div className="col-sm">
                             <DatePicker
+                            id='startDate'
                                 selected={this.state.startDate}
                                 showTimeSelect
-                                timeFormat="HH"
+                                timeFormat="HH:mm"
                                 timeIntervals={60}
                                 timeCaption="time"
                                 dateFormat="d.M.yyyy H:mm"
@@ -79,17 +80,18 @@ class TemperatureComponent extends Component {
                             />
                             &nbsp;
                             <DatePicker
+                            id='endDate'
                                 selected={this.state.endDate}
                                 showTimeSelect
-                                timeFormat="HH"
+                                timeFormat="HH:mm"
                                 timeIntervals={60}
                                 timeCaption="time"
                                 dateFormat="d.M.yyyy H:mm"
                                 customInput={<ExampleCustomInput/>}
                                 onChange={this.handleChangeEndDate}
                             />
-                            <button className="btn btn-secondary calendar-buttons" style={{margin:'0 0 0px 5px'}} onClick={() => this.onSearch()}> Search</button>
 
+                            <button className="btn btn-secondary calendar-buttons" style={{margin:'0 0 0px 5px'}} onClick={() => this.onSearch()}> Search</button>
 
                         </div>
 
@@ -103,16 +105,16 @@ class TemperatureComponent extends Component {
                     <thead>
                     <tr>
                         <th>Date</th>
-                        <th>TH</th>
-                        <th>TS</th>
-                        <th>Out</th>
+                        <th>Temp Happy</th>
+                        <th>Temp Snoopy</th>
+                        <th>Outside</th>
                     </tr>
                     </thead>
                     <tbody>
                     {
                         this.state.temperatures.map(
-                            temp =>
-                                <tr key={temp.id}>
+                            (temp, index) =>
+                                <tr key={index}>
                                     <td>{temp.date}</td>
                                     <td>{temp.insideHappy}</td>
                                     <td>{temp.insideSnoopy}</td>
