@@ -73,3 +73,10 @@
 .table td, .table th  {
     padding: .1rem !important;
 }
+
+.temperature-OPEN {
+    background-color: #fd5f6cdb !important;
+}
+.temperature-CLOSED {
+    background-color: #28a745a6 !important;
+}

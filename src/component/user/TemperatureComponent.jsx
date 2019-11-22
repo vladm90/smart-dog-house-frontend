@@ -116,8 +116,8 @@ class TemperatureComponent extends Component {
                             (temp, index) =>
                                 <tr key={index}>
                                     <td>{temp.date}</td>
-                                    <td>{temp.insideHappy}</td>
-                                    <td>{temp.insideSnoopy}</td>
+                                    <td className={`temperature-${temp.openHappy}`}>{temp.insideHappy}</td>
+                                    <td className={`temperature-${temp.openSnoopy}`}>{temp.insideSnoopy}</td>
                                     <td>{temp.outside}</td>
                                 </tr>
                         )
