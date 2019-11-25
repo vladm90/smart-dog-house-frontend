@@ -14,13 +14,16 @@ class TemperatureComponent extends Component {
             startDate: new Date(),
             endDate: new Date(),
         };
-
+        this._ref = React.createRef;
         this.reloadUserList = this.reloadUserList.bind(this);
     }
 
     componentDidMount() {
         this.reloadUserList();
-
+        const script = document.createElement('script');
+        script.src = "https://darksky.net/widget/default-small/42.360082,-71.05888/us12/en.js?width=undefined&height=70&title=Full Forecast&textColor=333333&bgColor=FFFFFF&skyColor=333&fontFamily=Default&customFont=&units=us"
+        script.async = true;
+        document.body.appendChild(script);
     }
 
     reloadUserList() {
@@ -62,7 +65,14 @@ class TemperatureComponent extends Component {
         return (
 
 
+
             <div border="1">
+               {/* //<iframe id="forecast_embed" frameBorder="0" height="245" width="100%"
+                //        src="https://darksky.net/widget/default/45.15134486567926,25.685867718505847/uk12/en.js?width=100%&height=245&title=Breaza&textColor=333333&bgColor=FFFFFF&transparency=false&skyColor=undefined&fontFamily=Default&customFont=&units=uk&htColor=333333&ltColor=333333&displaySum=yes&displayHeader=yes"></iframe>
+                */}
+
+
+
 
                 {<div className="container">
                     <div className="row" style={{margin: '10px'}}>
@@ -98,6 +108,7 @@ class TemperatureComponent extends Component {
 
                     </div>
                 </div>}
+
 
 
                 <table className="table table-striped" border="1">

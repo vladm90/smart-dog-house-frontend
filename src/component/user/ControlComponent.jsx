@@ -123,6 +123,15 @@ class ControlComponent extends Component {
 
                         </div>
 
+
+                    </div>
+                    <div className="row">
+                        <div className="col-sm" style={{margin:'0 10px 0 10px'}}>
+                            <iframe id="forecast_embed" frameBorder="0" height="163" width="100%"
+                                    src="https://w.bookcdn.com/weather/picture/3_274069_1_1_006fe6_355_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=&anc_id=88012"></iframe>
+
+                            {/*https://www.booked.net/?page=weather_widget_customize&type=3&cityID=109029&cmetric=1#*/}
+                        </div>
                     </div>
                 </div>
 
