@@ -14,7 +14,11 @@ class ApiService {
 
     getStats() {
             return axios.get(USER_API_BASE_URL + '/stats');
-        }
+    }
+
+    getImages() {
+        return axios.get(USER_API_BASE_URL + '/images');
+    }
 
 
     lightOn(relayId) {

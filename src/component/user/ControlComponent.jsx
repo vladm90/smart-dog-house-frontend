@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Toggle from 'react-bootstrap-toggle';
 import 'react-bootstrap-toggle/dist/bootstrap2-toggle.css'
 import ApiService from "../../service/ApiService";
+import Webcam from "react-webcam";
 //import RefreshIcon from '@material-ui/icons/Refresh';
 
 class ControlComponent extends Component {
@@ -14,7 +15,8 @@ class ControlComponent extends Component {
                 openHappy: '',
                 openSnoopy: '',
             }
-
+          const WebcamComponent = () => <Webcam />;
+        this.state = { image1: '' };
         this.state = { toggleHappyActive: true };
         this.state = { toggleSnoopyActive: true };
 
@@ -25,8 +27,24 @@ class ControlComponent extends Component {
 
      componentDidMount() {
             this.getStats();
+            //this.getImages();
         }
 
+    getImages() {
+        ApiService.getImages()
+            .then((res) => {
+                debugger;
+                let data1 = res.data.result;
+                const Example = '<img src={`data:image/jpeg;base64, data1`} />';
+               /* const Example = ( data ) => <img src={`data:image/jpeg;base64,${data}`} />*/
+
+                    this.setState({image1:data1});
+
+debugger;
+            });
+        /*  const DATE_OPTIONS = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+        this.setState({user: (new Date()).toLocaleDateString('en-US', DATE_OPTIONS)}); */
+    }
         getStats() {
             ApiService.getStats()
                 .then((res) => {
@@ -86,6 +104,7 @@ class ControlComponent extends Component {
     }
 
     render() {
+
         return (
 
 
@@ -133,6 +152,11 @@ class ControlComponent extends Component {
                             {/*https://www.booked.net/?page=weather_widget_customize&type=3&cityID=109029&cmetric=1#*/}
                         </div>
                     </div>
+
+                   {/* <div id="container2">   {this.state.image1 ? <img src={`data:image/jpeg;base64,${this.state.image1}`}/>: ''}
+                    </div>*/}
+
+
                 </div>
 
 

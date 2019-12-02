@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import TemperatureComponent from "./component/user/TemperatureComponent";
 import ControlComponent from "./component/user/ControlComponent";
+import EditUserComponent from "./component/user/EditUserComponent";
 import Application from "./component/user/Application";
 import Navbar from 'react-bootstrap/Navbar';
 import { Nav } from 'react-bootstrap';
@@ -45,7 +46,9 @@ function App() {
                   <Switch>
                       <Route path="/" exact component={Application} >
                           <Route path="/" component={ControlComponent} />
+                          <Route path="/" component={EditUserComponent} />
                           <Route path="/" component={TemperatureComponent} />
+
                       </Route>
                   </Switch>
               </div>

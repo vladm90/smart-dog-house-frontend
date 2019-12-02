@@ -1,87 +1,76 @@
-/*
-import React, { Component } from 'react'
-import ApiService from "../../service/ApiService";
+import React, { Component } from 'react';
+import Webcam from "react-webcam";
 
-class EditUserComponent extends Component {
+class EditUserComponent extends React.Component {
+    /*setRef = a => {
 
-    constructor(props){
-        super(props);
-        this.state ={
-            id: '',
-            firstName: '',
-            lastName: '',
-            age: '',
-            salary: '',
-        }
-        this.saveUser = this.saveUser.bind(this);
-        this.loadUser = this.loadUser.bind(this);
-    }
+        debugger;
+        console.log("123");
+        navigator.mediaDevices.enumerateDevices().then(function (devices) {
 
-    componentDidMount() {
-        this.loadUser();
-    }
+            devices.forEach(function(device) {
+                if(device.deviceId === 'b356c33cc11f49ea2278962d02ea36ca7e9d31d1507fd312a6887ef9198925ad'){
+                    //  this.webcam = webcam;
+                }
 
-    loadUser() {
-        ApiService.fetchUserById(window.localStorage.getItem("userId"))
-            .then((res) => {
-                let user = res.data.result;
-                this.setState({
-                id: user.id,
-                username: user.username,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                age: user.age,
-                salary: user.salary,
-                })
+                console.log(device.kind + ": " + device.label +
+                    " id = " + device.deviceId);
             });
-    }
+        });
 
-    onChange = (e) =>
-        this.setState({ [e.target.name]: e.target.value });
+       // console.log("1233");
+    };*/
 
-    saveUser = (e) => {
-        e.preventDefault();
-        let user = {id: this.state.id, password: this.state.password, firstName: this.state.firstName, lastName: this.state.lastName, age: this.state.age, salary: this.state.salary};
-        ApiService.editUser(user)
-            .then(res => {
-                this.setState({message : 'User added successfully.'});
-                this.props.history.push('/users');
-            });
-    }
+    capture = () => {
+        const imageSrc = this.webcam.getScreenshot();
+    };
 
     render() {
+        /*const videoConstraints = {
+            width: 1280,
+            height: 720,
+            facingMode: "env"
+        };
+
+        const videoConstraints2 = {
+            width: 640,
+            height: 480,
+            facingMode: "user"
+        };*/
+
         return (
-            <div>
-                <h2 className="text-center">Edit User</h2>
-                <form>
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm" style={{margin:'10px'}}>
 
-                    <div className="form-group">
-                        <label>User Name: </label>
-                        <input type="text" placeholder="username" name="username" className="form-control" disabled="true" defaultValue={this.state.username}/>
+                        <Webcam
+                        audio={false}
+                        height={350}
+                      //  ref={this.setRef}
+                        screenshotFormat="image/jpeg"
+                      //  videoSource="b356c33cc11f49ea2278962d02ea36ca7e9d31d1507fd312a6887ef9198925ad"
+                        width={350}
+                        //videoConstraints={videoConstraints}
+                    />
+                      {/*  <button onClick={this.capture}>Capture photo</button>*/}
                     </div>
 
-                    <div className="form-group">
-                        <label>First Name:</label>
-                        <input placeholder="First Name" name="firstName" className="form-control" value={this.state.firstName} onChange={this.onChange}/>
+                    <div className="col-sm" style={{margin:'10px'}}>
+                        <Webcam
+                            audio={false}
+                            height={350}
+                          //  ref={this.setRef}
+                          //  videoSource="b356c33cc11f49ea2278962d02ea36ca7e9d31d1507fd312a6887ef919892a"
+                            screenshotFormat="image/jpeg"
+                            width={350}
+                          //  videoConstraints={videoConstraints2}
+                        />
+
                     </div>
-
-                    <div className="form-group">
-                        <label>Last Name:</label>
-                        <input placeholder="Last name" name="lastName" className="form-control" value={this.state.lastName} onChange={this.onChange}/>
-                    </div>
-
-                    <div className="form-group">
-                        <label>Age:</label>
-                        <input type="number" placeholder="age" name="age" className="form-control" value={this.state.age} onChange={this.onChange}/>
-                    </div>
-
-
-
-                    <button className="btn btn-success" onClick={this.saveUser}>Save</button>
-                </form>
+                </div>
             </div>
+
         );
     }
 }
-
-export default EditUserComponent;*/
+export default EditUserComponent;
