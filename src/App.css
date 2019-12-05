@@ -80,3 +80,32 @@
 .temperature-CLOSED {
     background-color: #28a745a6 !important;
 }
+
+.inside-happy {
+    position: absolute;
+    top: 60%;
+    left: 28%;
+    color: #ffc107;
+    font-weight: bold;
+    font-size: 13px;
+    transform: translate(-50%, -50%);
+}
+.inside-snoopy {
+    position: absolute;
+    top: 60%;
+    left: 74%;
+    color: #ffc107;
+    font-weight: bold;
+    font-size: 13px;
+    transform: translate(-50%, -50%);
+}
+
+.outside {
+    position: absolute;
+    top: 21%;
+    left: 50%;
+    color: blue;
+    font-weight: bold;
+    font-size: 13px;
+    transform: translate(-50%, -50%);
+}
