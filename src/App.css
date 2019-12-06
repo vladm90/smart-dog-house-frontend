@@ -109,3 +109,9 @@
     font-size: 13px;
     transform: translate(-50%, -50%);
 }
+.weather {
+    height: 62px;
+    width: 100%;
+    object-fit: none;
+    object-position: 0  100%;
+}

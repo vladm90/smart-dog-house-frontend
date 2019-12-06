@@ -5,6 +5,7 @@ import ApiService from "../../service/ApiService";
 import houses from "../../resources/houses.png";
 import Button from 'react-bootstrap-button-loader';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import {red} from "@material-ui/core/colors";
 
 class ControlComponent extends Component {
     constructor(props) {
@@ -95,16 +96,22 @@ class ControlComponent extends Component {
         this.setState({toggleSnoopyActive: !this.state.toggleSnoopyActive});
     }
 
+
     render() {
 
-        /*  window.onload = function() {
+          window.onload = function() {
 
-              var iframe = document.getElementById("forecast_embed");
-              debugger;
-              iframe.querySelector("body").style.margin = "60px";
-             // elmnt.style.display = "none";
+           /*   var iframe = document.getElementById("forecast_embed");
 
-          };*/
+              iframe.getElementsByClassName("body").style.margin = "60px";
+             // elmnt.style.display = "none";*/
+
+            /*  var x = document.getElementById("forecast_embed");
+              var y = x.contentDocument;
+              y.body.style.backgroundColor = "red";
+*/
+
+          };
 
         return (
             <div className="container">
@@ -131,6 +138,10 @@ class ControlComponent extends Component {
                         />
                         <Button loading={this.state.loading} size="sm" className="btn btn-warning" style={{margin: '0 0 0px 5px'}}
                                 onClick={() => this.getStats()}><RefreshIcon/></Button>
+                    </div>
+                    <div className="col-sm" style={{margin: '10px'}}>
+                        <img className="weather" alt="house" src="https://w.bookcdn.com/weather/picture/3_274069_1_1_006fe6_355_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=&anc_id=88012"/>
+                        {/*https://www.booked.net/?page=weather_widget_customize&type=3&cityID=109029&cmetric=1#*/}
                     </div>
                    {/* <div className="col-sm" style={{margin: '10px'}}>
 
@@ -162,14 +173,7 @@ class ControlComponent extends Component {
                     </div>
 
                 </div>
-                <div className="row">
-                    <div className="col-sm" style={{margin: '0 10px 0 10px'}}>
-                        <iframe id="forecast_embed" frameBorder="0" title="temperatures" scrolling="no" height="165" width="100%"
-                                src="https://w.bookcdn.com/weather/picture/3_274069_1_1_006fe6_355_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=&anc_id=88012"></iframe>
 
-                        {/*https://www.booked.net/?page=weather_widget_customize&type=3&cityID=109029&cmetric=1#*/}
-                    </div>
-                </div>
 
             </div>
 
