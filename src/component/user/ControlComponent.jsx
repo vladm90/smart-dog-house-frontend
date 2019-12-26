@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import Toggle from 'react-bootstrap-toggle';
 import 'react-bootstrap-toggle/dist/bootstrap2-toggle.css'
 import ApiService from "../../service/ApiService";
-import houses from "../../resources/houses.png";
+import houses from "../../resources/houses2.png";
+import lightSnoopy from "../../resources/lightSnoopy.png";
+import lightHappy from "../../resources/lightHappy.png";
 import Button from 'react-bootstrap-button-loader';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import {red} from "@material-ui/core/colors";
@@ -98,21 +100,6 @@ class ControlComponent extends Component {
 
 
     render() {
-
-          window.onload = function() {
-
-           /*   var iframe = document.getElementById("forecast_embed");
-
-              iframe.getElementsByClassName("body").style.margin = "60px";
-             // elmnt.style.display = "none";*/
-
-            /*  var x = document.getElementById("forecast_embed");
-              var y = x.contentDocument;
-              y.body.style.backgroundColor = "red";
-*/
-
-          };
-
         return (
             <div className="container">
                 <div className="row">
@@ -143,22 +130,18 @@ class ControlComponent extends Component {
                         <img className="weather" alt="house" src="https://w.bookcdn.com/weather/picture/3_274069_1_1_006fe6_355_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=&anc_id=88012"/>
                         {/*https://www.booked.net/?page=weather_widget_customize&type=3&cityID=109029&cmetric=1#*/}
                     </div>
-                   {/* <div className="col-sm" style={{margin: '10px'}}>
-
-                        <li>Temperature Happy: {this.state.insideHappy}&#176;C</li>
-                        <li>Temperature Snoopy: {this.state.insideSnoopy}&#176;C</li>
-                        <li>Temperature Outside: {this.state.outside}&#176;C</li>
-                        <li>Status Happy: {this.state.openHappy}</li>
-                        <li>Status Snoopy: {this.state.openSnoopy}</li>
-
-                    </div>*/}
 
 
                 </div>
                 <div className="row">
-                    <div className="col-sm" style={{margin: '10px'}}>
+                    <div className="col-sm">
                         <div className="houses">
                             <img alt="house" src={houses} width="100%" height="100%"/>
+
+                            {/*{ this.state.openHappy === false ? 1 : 2}*/}
+                            <img className="light" alt="light" src={lightSnoopy} width="100%" height="100%"/>
+                            <img className="light" alt="light" src={lightHappy} width="100%" height="100%"/>
+
                             <div className="inside-happy">
                                 <i>10.4&#176;C</i>
                             </div>
@@ -168,6 +151,7 @@ class ControlComponent extends Component {
                             <div className="outside">
                                 <i>10.4&#176;C</i>
                             </div>
+
 
                         </div>
                     </div>
