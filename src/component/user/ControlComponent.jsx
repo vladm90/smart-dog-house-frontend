@@ -142,14 +142,15 @@ class ControlComponent extends Component {
                             <img className="light" alt="light" src={lightSnoopy} width="100%" height="100%"/>
                             <img className="light" alt="light" src={lightHappy} width="100%" height="100%"/>
 
-                            <div className="inside-happy">
-                                <i>10.4&#176;C</i>
-                            </div>
+
                             <div className="inside-snoopy">
-                                <i>10.4&#176;C</i>
+                                <i>{this.state.insideSnoopy}&#176;C</i>
+                            </div>
+                             <div className="inside-happy">
+                                <i>{this.state.insideHappy}&#176;C</i>
                             </div>
                             <div className="outside">
-                                <i>10.4&#176;C</i>
+                                <i>{this.state.outside}&#176;C</i>
                             </div>
 
 

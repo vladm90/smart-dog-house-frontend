@@ -91,7 +91,7 @@
 .inside-happy {
     position: absolute;
     top: 47%;
-    left: 31%;
+    left: 67%;
     color: #ffc107;
     font-weight: bold;
     font-size: 12px;
@@ -100,7 +100,7 @@
 .inside-snoopy {
     position: absolute;
     top: 47%;
-    left: 67%;
+    left: 31%;
     color: #ffc107;
     font-weight: bold;
     font-size: 12px;
@@ -117,7 +117,7 @@
     transform: translate(-50%, -50%);
 }
 .weather {
-    height: 62px;
+    height: 79px;
     width: 100%;
     object-fit: none;
     object-position: 0  100%;
