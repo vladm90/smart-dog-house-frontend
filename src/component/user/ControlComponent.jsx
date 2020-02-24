@@ -144,7 +144,7 @@ class ControlComponent extends Component {
 
 
                             <div className="inside-snoopy">
-                                <i>{this.state.insideSnoopy}&#176;C</i>
+                                <i>{this.state.insideSnoopy}&#176;C </i>
                             </div>
                              <div className="inside-happy">
                                 <i>{this.state.insideHappy}&#176;C</i>
