@@ -3,11 +3,14 @@ import Toggle from 'react-bootstrap-toggle';
 import 'react-bootstrap-toggle/dist/bootstrap2-toggle.css'
 import ApiService from "../../service/ApiService";
 import houses from "../../resources/houses2.png";
+import imageHappy from "../../resources/imageHappy.jpg";
 import lightSnoopy from "../../resources/lightSnoopy.png";
 import lightHappy from "../../resources/lightHappy.png";
 import Button from 'react-bootstrap-button-loader';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import SaveIcon from '@material-ui/icons/Save';
 import {red} from "@material-ui/core/colors";
+import TextField from '@material-ui/core/TextField';
 
 class ControlComponent extends Component {
     constructor(props) {
@@ -30,6 +33,10 @@ class ControlComponent extends Component {
 
     componentDidMount() {
         this.getStats();
+    }
+
+    getImages() {
+        ApiService.getImages()
     }
 
     getStats() {
@@ -103,7 +110,38 @@ class ControlComponent extends Component {
         return (
             <div className="container">
                 <div className="row">
+                   <div className="col-sm" style={{margin: '10px'}}>
+                        <span>Mode: </span>
+                        <Toggle
+                            onClick={this.onToggleHappy}
+                            on={"Auto"}
+                            off={"Manual"}
+                            width={"130px"}
+                            align={"center"}
+                            offstyle="danger"
+                            active={this.state.toggleHappyActive}
+                        />
+
+                   </div>
+                   <div className="col-sm" style={{margin: '10px'}}>
+                         <span>Temperature:</span>
+
+                          <TextField
+                            label="minim"
+                             id="filled-margin-dense"
+                            style = {{width: 70, margin: '0 0 10px 10px'}}
+                            inputProps={{style: {fontSize: 20}}} // font size of input text
+                            InputLabelProps={{style: {fontSize: 20}}} // font size of input label
+                          />
+
+                           <Button loading={this.state.loading} size="sm" className="btn btn-warning" style={{margin: '0 0 0px 5px'}}
+                                   onClick={() => this.getStats()}><RefreshIcon/></Button>
+
+                   </div>
+                </div>
+                <div className="row">
                     <div className="col-sm" style={{margin: '10px'}}>
+                        <span>Heater: </span>
                         <Toggle
                             onClick={this.onToggleHappy}
                             on={"Happy ON"}
@@ -123,8 +161,6 @@ class ControlComponent extends Component {
                             offstyle="danger"
                             active={this.state.toggleSnoopyActive}
                         />
-                        <Button loading={this.state.loading} size="sm" className="btn btn-warning" style={{margin: '0 0 0px 5px'}}
-                                onClick={() => this.getStats()}><RefreshIcon/></Button>
                     </div>
                     <div className="col-sm" style={{margin: '10px'}}>
                         <img className="weather" alt="house" src="https://w.bookcdn.com/weather/picture/3_274069_1_1_006fe6_355_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=&anc_id=88012"/>
@@ -137,30 +173,26 @@ class ControlComponent extends Component {
                     <div className="col-sm">
                         <div className="houses">
                             <img alt="house" src={houses} width="100%" height="100%"/>
-
-                            {/*{ this.state.openHappy === false ? 1 : 2}*/}
                             <img className="light" alt="light" src={lightSnoopy} width="100%" height="100%"/>
                             <img className="light" alt="light" src={lightHappy} width="100%" height="100%"/>
 
-
-                            <div className="inside-snoopy">
-                                <i>{this.state.insideSnoopy}&#176;C</i>
-                            </div>
-                             <div className="inside-happy">
-                                <i>{this.state.insideHappy}&#176;C</i>
-                            </div>
-                            <div className="outside">
-                                <i>{this.state.outside}&#176;C</i>
-                            </div>
-
-
+                            <div className="inside-snoopy"><i>{this.state.insideSnoopy}&#176;C</i></div>
+                             <div className="inside-happy"><i>{this.state.insideHappy}&#176;C</i></div>
+                            <div className="outside"><i>{this.state.outside}&#176;C</i></div>
                         </div>
                     </div>
-
+                </div>
+                <div className="row">
+                   <div className="col-sm" style={{margin: '20px'}}>
+                       <div className="houses">
+                             <img onClick={() => this.getImages()} alt="house" src={imageHappy} width="50%" height="50%"/>
+                             <img onClick={() => this.getImages()} alt="house" src={imageHappy} width="50%" height="50%"/>
+                       </div>
+                   </div>
                 </div>
 
-
             </div>
+
 
 
         )
